@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clone the Git repository
+                git 'git@github.com:JohnDeLaSnow/cine-backend.git'
+            }
+        }
+
+        stage('Setup') {
+            steps {
+                // Install Maven
+                sh 'sudo apt-get update && sudo apt-get install -y maven && mvn -B -Dmaven.compiler.source=17 -Dmaven.compiler.target=17'
+            }
+        }
+
+
+
+        stage('Build') {
+            steps {
+                // Build the Spring Boot project using Maven
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests for the project
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Run the Spring Boot application
+                sh 'java -jar target/demo-0.0.1-SNAPSHOT.jar'
+            }
+        }
+    }
+}

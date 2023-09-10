@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.hua.demo.DemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.938 s - in com.hua.demo.DemoApplicationTests
